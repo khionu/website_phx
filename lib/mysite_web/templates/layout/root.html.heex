@@ -1,0 +1,50 @@
+<% alias MySiteWeb.Components.Profile %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tag() %>
+    <%= live_title_tag page_title(assigns) %>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+    <script src="https://kit.fontawesome.com/e54d8dfee2.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Root of all things -->
+    <div id="root" class="columns is-gapless mb-0">
+      <!-- Non-scrolling sidebar with nav and quick links -->
+      <div id="sidebar" class="column is-flex is-flex-direction-column is-3 card has-background-primary box is-radiusless">
+        <!-- Header -->
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-72x72">
+                <img src="images/avatar.png" alt="Avatar" class="set-72x72 is-rounded">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title has-text-centered is-5">Khionu Sybiern</p>
+              <p class="subtitle has-text-centered is-6">Computers, Culture, and a Little of Everything</p>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation -->
+        <%= live_render(@conn, MySiteWeb.NavLive) %>
+        <!-- Social links -->
+        <footer id="social-links" class="card-footer has-text-white mt-auto">
+          <%= for profile <- @profiles do %>
+            <span class="card-footer-item">
+              <Profile.shield_and_tag profile={profile} />
+            </span>
+          <% end %>
+        </footer>
+      </div>
+      <!-- Primary content -->
+      <div id="content" class="column is-9 content">
+        <%= @inner_content %>
+      </div>
+    </div>
+  </body>
+</html>

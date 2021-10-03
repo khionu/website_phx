@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+// My custom values
+$my-purple: #9372DA;
+$my-blurple: #7177cf;
+$my-white: #f3f3f3;
+$my-black: #363636;
+
+$my-theme: $my-white;
+
+// Reassignments
+$primary: $my-purple;
+$secondary: $my-blurple;
+$menu-label-color: #cdbdee;
+
+@import "../vendor/bulma_0.9.3/bulma.sass";
+
+// Main
+html {
+  overflow-y: hidden;
+  background-color: $my-theme;
+}
+
+#sidebar, #root, body, html {
+  height: 100%;
+}
+
+#sidebar {
+  .title {
+    color: $my-theme;
+  }
+  p,a, .menu-list a {
+    color: $my-white;
+  }
+  .menu-list a.is-active {
+    color: $my-purple;
+    font-weight: bold;
+    background-color: $my-white;
+  }
+  .menu-list a:hover {
+    color: $my-purple;
+  }
+}
+
+#social-links {
+  vertical-align: bottom;
+}
+
+.set-72x72 {
+  max-width:72px;
+  max-height:72px;
+}
